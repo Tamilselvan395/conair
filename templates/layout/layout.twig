@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    {# ================================
+       PRIMARY SEO META
+    ================================= #}
+
+    {% set meta_title = meta_title|default(title|default('My Website')) %}
+    {% set meta_description = meta_description|default('Professional website description goes here.') %}
+    {% set meta_keywords = meta_keywords|default('business, services, company') %}
+    {% set meta_robots = meta_robots|default('index, follow') %}
+    {% set canonical_url = canonical_url|default(base_url ~ app.request.uri) %}
+
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="keywords" content="{{ meta_keywords }}">
+    <meta name="robots" content="{{ meta_robots }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% set canonical_url = canonical_url|default(base_url ~ current_url) %}
+
+    {# ================================
+       OPEN GRAPH + TWITTER (DYNAMIC IMAGE)
+    ================================= #}
+
+    {% set default_og_image = base_url ~ '/assets/images/og-default.jpg' %}
+    {% set final_og_image = og_image is defined and og_image ? og_image : default_og_image %}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:image" content="{{ final_og_image }}">
+    <meta property="og:image:secure_url" content="{{ final_og_image }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="My Website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ meta_title }}">
+    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:image" content="{{ final_og_image }}">
+
+    {# ================================
+       FAVICON + CSS
+    ================================= #}
+
+    {# <link rel="icon" type="image/png" href="{{ base_url }}/assets/images/favicon.png"> #}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ base_url }}/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ base_url }}/assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ base_url }}/assets/images/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="{{ base_url }}/assets/css/styles.css">
+
+    <!-- CSS Files
+    ================================================== -->
+
+    <link href="{{ base_url }}/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="{{ base_url }}/assets/css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url }}/assets/css/swiper.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url }}/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url }}/assets/css/coloring.css" rel="stylesheet" type="text/css">
+
+    {# ================================
+       ORGANIZATION SCHEMA (JSON-LD)
+    ================================= #}
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "My Website",
+            "url": "{{ base_url }}",
+            "logo": "{{ base_url }}/assets/images/logo.png"
+        }
+    </script>
+
+</head>
+
+<body>
+
+        <header class="header-light transparent scroll-light has-topbar">
+            <div id="topbar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-between xs-hide">
+                                <div class="header-widget d-flex">
+                                    <div class="topbar-widget"><a href="#"><i class="icofont-phone"></i>+929 333 9296</a></div>
+                                    <div class="topbar-widget"><a href="#"><i class="icofont-envelope"></i>contact@coolair.com</a></div>
+                                    <div class="topbar-widget"><a href="#"><i class="icofont-wall-clock"></i>Mon - Fri 08.00 - 18.00</a></div>
+                                </div>
+
+                                <div class="social-icons">
+                                    <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                                    <a href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                                    <a href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                                    <a href="#"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+                                    <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex sm-pt10">
+                            <div class="de-flex-col">
+                                <!-- logo begin -->
+                                <div id="logo">
+                                    <a href="index.html">
+                                        <img class="logo-main" src="{{ base_url }}/assets/images/conair.webp" alt="" >
+                                        <img class="logo-scroll" src="{{ base_url }}/assets/images/conair.webp" alt="" >
+                                        <img class="logo-mobile" src="{{ base_url }}/assets/images/conair.webp" alt="" >
+                                    </a>
+                                </div>
+                                <!-- logo close -->
+                            </div>
+                            <div class="de-flex-col header-col-mid">
+                                <ul id="mainmenu">
+                                    <li><a class="menu-item" href="#">Home</a></li>
+                                    <li><a class="menu-item" href="contact.html">About Us</a></li>
+                                    <li><a class="menu-item" href="#">Services</a>
+                                        <ul>
+                                            <li><a class="menu-item" href="installation.html">Civil & Finishing</a></li>
+                                            <li><a class="menu-item" href="repair.html">MEP Works</a></li>
+                                            <li><a class="menu-item" href="maintenance.html">HVAC Systems</a></li>
+                                            <li><a class="menu-item" href="pricing-plans.html">Security & Automation</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="menu-item" href="projects.html">Projects</a></li>
+                                    <li><a class="menu-item" href="products.html">Clients</a></li>
+                                    <li><a class="menu-item" href="blog.html">Blog</a></li>
+                                    <li><a class="menu-item" href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="de-flex-col">
+                                <div class="menu_side_area">          
+                                    <a href="contact.html" class="btn-main bg-color-2">Schedule Now</a>
+                                    <span id="menu-btn"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- footer begin -->
+    <footer class="section-dark">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-sm-6">
+                    <img class="footer-image" src="{{ base_url }}/assets/images/conair.webp" alt="">
+                    <div class="spacer-20"></div>
+                    <p>We specialize in providing top-quality heating, ventilation, and air conditioning services tailored to your unique requirements. Our skilled technicians are dedicated to delivering reliable solutions that ensure your comfort and satisfaction.</p>
+
+                    <div class="social-icons mb-sm-30">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="widget">
+                                <h5>Company</h5>
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Our Services</a></li>
+                                    <li><a href="#">Projects</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="widget">
+                                <h5>Our Services</h5>
+                                <ul>
+                                    <li><a href="#">Maintenace</a></li>
+                                    <li><a href="#">Repairs</a></li>
+                                    <li><a href="#">Installation</a></li>
+                                    <li><a href="#">Emergency</a></li>
+                                    <li><a href="#">Replacements</a></li>
+                                    <li><a href="#">Dust Cleaning</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+                    <div class="widget">
+                        <h5 class="id-color-2">24 Hours &amp; Emergencies</h5>
+                        <h2 class="jarallax mb0 wow fadeInUp" data-wow-delay=".2s"><i class="icofont-phone-circle id-color-2"></i> +929 333 9296</h2>
+
+                        <div class="spacer-20"></div>
+
+                        <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color-2"></i>Office Location</div>
+                        100 S Main St, New York, NY
+
+                        <div class="spacer-20"></div>
+
+                        <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color-2"></i>Send a Message</div>
+                        contact@coolair.com
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subfooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex">
+                            <div class="de-flex-col">
+                                Copyright 2025 - CoolAir by Designesia
+                            </div>
+                            <ul class="menu-simple">
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="{{ base_url }}/assets/js/plugins.js"></script>
+    <script src="{{ base_url }}/assets/js/designesia.js"></script>
+    <script src="{{ base_url }}/assets/js/swiper.js"></script>
+    <script src="{{ base_url }}/assets/js/custom-marquee.js"></script>
+    <script src="{{ base_url }}/assets/js/custom-swiper-1.js"></script>
+</body>
+
+</html>

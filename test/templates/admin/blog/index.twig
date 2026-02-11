@@ -1,0 +1,70 @@
+{% extends "admin/layout.twig" %}
+
+{% block content %}
+
+<h2>Manage Blogs</h2>
+
+<br>
+
+<a href="{{ base_url }}/admin/blog/create" 
+   style="padding:8px 15px; background:#007bff; color:white; text-decoration:none;">
+   + Create Blog
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10" cellspacing="0" width="100%">
+    <thead style="background:#343a40; color:white;">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th width="220">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for blog in blogs %}
+        <tr>
+            <td>
+                {% if blog.featured_image %}
+                    <img src="{{ base_url }}/uploads/{{ blog.featured_image }}" width="60">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+
+            <td>{{ blog.title }}</td>
+
+            
+
+            <td>
+                {% if blog.status == 'published' %}
+                    <span style="color:green;">Published</span>
+                {% else %}
+                    <span style="color:orange;">Draft</span>
+                {% endif %}
+            </td>
+
+            <td>{{ blog.created_at|date("d M Y") }}</td>
+            
+
+            <td>
+                <a href="{{ base_url }}/blog/{{ blog.slug }}" target="_blank">View</a> |
+                <a href="{{ base_url }}/admin/blog/edit/{{ blog.id }}">Edit</a> |
+                <a href="{{ base_url }}/admin/blog/delete/{{ blog.id }}"
+                onclick="return confirm('Are you sure?')">
+                Delete
+                </a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">No blogs found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

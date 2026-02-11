@@ -1,0 +1,119 @@
+{% extends "layout/layout.twig" %}
+
+
+{# ===== SEO VARIABLES FOR HOME PAGE ===== #}
+
+{% set title = "Home" %}
+{% set meta_title = "Professional AC & Maintenance Services in Dubai" %}
+{% set meta_description = "We provide AC installation, waterproofing, painting and full maintenance services across Dubai." %}
+{% set meta_keywords = "AC service Dubai, waterproofing Dubai, maintenance company" %}
+{% set meta_robots = "index, follow" %}
+{% set og_image = base_url ~ "/assets/images/home-og.jpg" %}
+
+{% block content %}
+
+<section id="subheader" class="jarallax text-light">
+    <div class="container relative z-index-1000">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                {# <div class="subtitle s2 bg-color text-light wow fadeInUp mb-2">Our Service</div> #}
+                <h1>Services</h1>
+                <ul class="crumb">
+                    <li><a href="{{ base_url }}/">Home</a></li>
+                    <li class="active">Services</li>
+                </ul>
+            </div>
+            {# <div class="col-lg-6 text-lg-end">
+                <div class="fs-20 fw-600 no-bottom sm-hide">Air Conditioning and Heating Specialists</div>
+            </div> #}
+        </div>
+    </div>
+    <div class="de-overlay"></div>
+</section>
+
+<section class="bg-light space">
+                <div class="container ">
+                {# <div class="row justify-content-center"> #}
+                    {# <div class="col-lg-10"> #}
+                        <div class="row g-4">
+
+                            <div class="row g-4">
+                                <div class=" text-center">
+                                    <div class="subtitle  wow fadeInUp mb-3">What We Do</div>
+                                    <h2 class="wow fadeInUp sec-title" data-wow-delay=".2s">Expert Engineering Services You Can Trust</h2>
+                                    <p class="lead wow fadeInUp">We provide integrated mechanical, electrical, and plumbing services designed to deliver efficiency, safety, and long-term reliability.    Our experienced team ensures every project meets the highest standards of performance and compliance.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-4 wow fadeInRight" data-wow-delay="0s">
+                                <div class="overflow-hidden rounded-5">
+                                    <div class="relative">
+                                        <img src="{{ base_url }}/assets/images/products/hvac.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="padding40 bg-white relative">
+                                        <img src="{{ base_url }}/assets/images/svg-color/air-conditioner-svgrepo-com.svg" class="w-70px p-2 bg-white abs abs-center rounded-1 mt-70" alt="">
+                                        <h3 class="fs-30">AC Installation & Maintenance</h3>
+                                        <p class="no-bottom">At Conair, we provide professional air conditioning installation, servicing, and maintenance to ensure efficient cooling performance. </p>
+                                        <div class="spacer-20"></div>
+                                        <a class="btn-main w-100" href="installation.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 wow fadeInRight" data-wow-delay="0s">
+                                <div class="overflow-hidden rounded-5">
+                                    <div class="relative">
+                                        <img src="{{ base_url }}/assets/images/products/plumbing.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="padding40 bg-white relative">
+                                        <img src="{{ base_url }}/assets/images/svg-color/air-conditioner-svgrepo-com.svg" class="w-70px p-2 bg-white abs abs-center rounded-1 mt-70" alt="">
+                                        <h3 class="fs-30">Plumbing Services</h3>
+                                        <p class="no-bottom">At Conair, we provide professional plumbing installation, repair, and maintenance services for residential, commercial, and industrial properties.</p>
+                                        <div class="spacer-20"></div>
+                                        <a class="btn-main w-100" href="installation.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 wow fadeInRight" data-wow-delay="0s">
+                                <div class="overflow-hidden rounded-5">
+                                    <div class="relative">
+                                        <img src="{{ base_url }}/assets/images/products/electrical.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="padding40 bg-white relative">
+                                        <img src="{{ base_url }}/assets/images/svg-color/air-conditioner-svgrepo-com.svg" class="w-70px p-2 bg-white abs abs-center rounded-1 mt-70" alt="">
+                                        <h3 class="fs-30">Electrical Services</h3>
+                                        <p class="no-bottom">At Conair, we provide professional electrical installation, repair, and maintenance services for residential, commercial, and industrial properties.</p>
+                                        <div class="spacer-20"></div>
+                                        <a class="btn-main w-100" href="installation.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            {# <div class="col-lg-4 col-md-4 wow fadeInRight" data-wow-delay=".4s">
+                                <div class="overflow-hidden rounded-5">
+                                    <div class="relative">
+                                        <h3 class="abs-centered z-1000 text-white mb-0 fs-30">Maintenance</h3>
+                                        <img src="{{ base_url }}/assets/images/misc/services-3.webp" class="img-fluid" alt="">
+                                        <div class="de-overlay-gradient-2"></div>
+                                    </div>
+                                    <div class="padding40 bg-white relative">
+                                        <img src="{{ base_url }}/assets/images/svg-color/completed-order-svgrepo-com.svg" class="w-70px p-2 bg-white abs abs-center rounded-1 mt-70" alt=""> 
+                                        <p class="no-bottom">Trust us to deliver reliable solutions, exceptional service, and peace of mind for all your HVAC needs. </p>
+                                        <div class="spacer-20"></div>
+                                        <a class="btn-main w-100" href="maintenance.html">Read more</a>
+                                    </div>
+                                </div>
+                                
+                            </div> #}
+
+                        </div>
+                    {# </div> #}
+                {# </div> #}
+
+                    
+                </div>
+            </section>
+
+{% endblock %}

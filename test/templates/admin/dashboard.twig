@@ -1,0 +1,28 @@
+{% extends "admin/layout.twig" %}
+
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<div style="display:flex; gap:20px; margin-top:20px;">
+
+    <div style="background:#28a745; color:white; padding:20px; width:200px;">
+        <h3>Published</h3>
+        <h2>{{ published_count }}</h2>
+    </div>
+
+    <div style="background:#ffc107; color:black; padding:20px; width:200px;">
+        <h3>Draft</h3>
+        <h2>{{ draft_count }}</h2>
+    </div>
+
+</div>
+
+<br><br>
+
+<a href="{{ base_url }}/admin/blog" 
+   style="padding:10px 15px; background:#007bff; color:white; text-decoration:none;">
+   Manage Blogs
+</a>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout/layout.twig" %}
+
+{% block content %}
+
+    <section id="subheader" class="jarallax text-light">
+        <div class="container relative z-index-1000">
+                <div class=" text-center">
+                    <div class="subtitle s2 bg-color text-light wow fadeInUp mb-2">Our Blog</div>
+                    <h1>{{ blog.title }}</h1>
+                    <ul class="crumb">
+                        <li><a href="{{ base_url }}">Home</a></li>
+                        <li class="active">{{ blog.title }}</li>
+                    </ul>
+                </div>
+        </div>
+        <div class="de-overlay"></div>
+    </section>
+
+<section class="space">
+    <div class="container">
+        <div class="row gx-5">
+
+            <!-- LEFT SIDE -->
+            <div class="col-lg-8">
+                <div class="blog-read">
+                    <h1>{{ blog.title }}</h1>
+
+                    <div class="post-text">
+                        {{ blog.content|raw }}
+                    </div>
+                </div>
+
+                <div class="spacer-single"></div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-lg-4">
+                <div class="widget widget-post">
+                    <h4>Recent Posts</h4>
+
+                    <ul class="de-bloglist-type-1">
+
+                        {% for post in recentPosts %}
+                        <li>
+                            <div class="d-image">
+                                <!-- If you add featured_image later -->
+                                 <img src="{{ base_url }}/uploads/{{ post.featured_image }}" alt="">
+                            </div>
+                            <div class="d-content">
+                                <a href="{{ base_url }}/blog/{{ post.slug }}">
+                                    <h4>{{ post.title }}</h4>
+                                </a>
+                                <div class="d-date">
+                                    {{ post.created_at|date("F d, Y") }}
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layout/layout.twig" %}
+
+{% block content %}
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+
+    <!-- Subheader -->
+    <section id="subheader" class="jarallax text-light">
+        <img src="{{ base_url }}/images/background/7.webp" class="jarallax-img" alt="Blog Background">
+        <div class="container relative z-index-1000">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="subtitle s2 bg-color text-light wow fadeInUp mb-2">Our Blog</div>
+                    <h1>Stay Up to Date</h1>
+                    <ul class="crumb">
+                        <li><a href="{{ base_url }}">Home</a></li>
+                        <li class="active">Blog</li>
+                    </ul>
+                </div>
+                {# <div class="col-lg-6 text-lg-end">
+                    <div class="fs-20 fw-600 no-bottom sm-hide">
+                        Air Conditioning and Heating Specialists
+                    </div>
+                </div> #}
+            </div>
+        </div>
+        <div class="de-overlay"></div>
+    </section>
+
+    <!-- Blog List Section -->
+    <section class="space">
+        <div class="container">
+            <div class="row g-4">
+
+                {% for blog in blogs %}
+                    <div class="col-lg-4 col-md-6 mb10">
+                        <div class="bloglist rounded-20px h-100">
+                            <div class="post-content h-100 d-flex flex-column">
+                                
+                                <div class="post-image">
+                                    <div class="d-tagline">
+                                        <span>Blog</span>
+                                    </div>
+                                    <img src="{{ base_url }}/uploads/{{ blog.featured_image }}" 
+                                         alt="{{ blog.title }}" 
+                                         class="img-fluid">
+                                </div>
+
+                                <div class="post-text padding40 pt-2 d-flex flex-column flex-grow-1">
+                                    <h4>
+                                        <a href="{{ base_url }}/blog/{{ blog.slug }}">
+                                            {{ blog.title }}
+                                        </a>
+                                    </h4>
+
+                                    <p>
+                                        {{ blog.content|striptags|slice(0,120) }}...
+                                    </p>
+
+                                    <a class="btn-main btn-light-trans mt-auto"
+                                       href="{{ base_url }}/blog/{{ blog.slug }}">
+                                       Read more
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-12 text-center">
+                        <p>No blogs found.</p>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "admin/layout.twig" %}
+
+{% block content %}
+
+<h2>Edit Blog</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <div style="margin-bottom:15px;">
+        <label>Title</label><br>
+        <input type="text" name="title" value="{{ blog.title }}" required style="width:100%; padding:8px;">
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>Meta Title</label><br>
+        <input type="text" name="meta_title" value="{{ blog.meta_title }}" style="width:100%; padding:8px;">
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>Meta Description</label><br>
+        <textarea name="meta_description" rows="3" style="width:100%; padding:8px;">{{ blog.meta_description }}</textarea>
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>Content</label><br>
+        <textarea name="content" id="editor" rows="8" style="width:100%; padding:8px;">{{ blog.content }}</textarea>
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>Featured Image</label><br>
+
+        {% if blog.featured_image %}
+            <img src="{{ base_url }}/uploads/{{ blog.featured_image }}" width="120"><br><br>
+        {% endif %}
+
+        <input type="file" name="featured_image">
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>Status</label><br>
+        <select name="status" style="padding:8px;">
+            <option value="draft" {% if blog.status == 'draft' %}selected{% endif %}>Draft</option>
+            <option value="published" {% if blog.status == 'published' %}selected{% endif %}>Publish</option>
+        </select>
+    </div>
+
+    <button type="submit" style="padding:10px 20px; background:#28a745; color:white; border:none;">
+        Update Blog
+    </button>
+
+</form>
+
+<script src="{{ base_url }}/assets/editor/tinymce/tinymce.min.js"></script>
+<script>
+tinymce.init({
+    selector: '#editor',
+    height: 450,
+    menubar: false,
+    plugins: 'lists link image table code',
+    toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code'
+});
+</script>
+
+{% endblock %}
