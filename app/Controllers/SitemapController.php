@@ -23,12 +23,17 @@ class SitemapController
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
-        // Static Pages
+        /*
+        |--------------------------------------------------------------------------
+        | Static Pages
+        |--------------------------------------------------------------------------
+        */
         $staticPages = [
             '/',
             '/about',
             '/services',
-            '/blog'
+            '/blog',
+            '/contact'
         ];
 
         foreach ($staticPages as $page) {
@@ -40,7 +45,31 @@ class SitemapController
             </url>';
         }
 
-        // Blog Posts
+        /*
+        |--------------------------------------------------------------------------
+        | Service Detail Pages (STATIC)
+        |--------------------------------------------------------------------------
+        */
+        $serviceSlugs = [
+            'electrical-maintenance-installation-company-uae',
+            'mechanical-mep-contractors-uae',
+            'plumbing-services-dubai'
+        ];
+
+        foreach ($serviceSlugs as $slug) {
+            $xml .= '<url>
+                <loc>' . $baseUrl . '/services/' . $slug . '</loc>
+                <lastmod>' . date('Y-m-d') . '</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.7</priority>
+            </url>';
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Blog Posts
+        |--------------------------------------------------------------------------
+        */
         $stmt = $this->pdo->query("
             SELECT slug, created_at
             FROM blogs

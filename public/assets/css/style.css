@@ -21098,3 +21098,53 @@ img {
 .feature-card:hover .feature-icon {
     background: #000;
 }
+
+
+.specialization-section {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.specialization-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.specialization-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px var(--primary-color);
+    transition: 0.3s ease;
+    /* border: 2px solid var(--primary-color); */
+}
+
+.specialization-item:hover {
+    transform: translateY(-5px);
+    box-shadow: -2px -2px 3px var(--primary-color);
+}
+
+.specialization-item .icon {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-top: 3px;
+}
+
+.specialization-item p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .specialization-grid {
+        grid-template-columns: 1fr;
+    }
+}

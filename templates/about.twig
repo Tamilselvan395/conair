@@ -1,0 +1,397 @@
+{% extends "layout/layout.twig" %}
+
+{# ===== SEO VARIABLES FOR ABOUT PAGE ===== #}
+{% set title = "About Us" %}
+{% set meta_title = "About CONAIR | Professional AC & Maintenance Services in Dubai" %}
+{% set meta_description = "Learn about CONAIR - Dubai's trusted AC installation, waterproofing, painting and maintenance company. 10+ years of excellence, 5000+ happy customers." %}
+{% set meta_keywords = "about us, AC company Dubai, maintenance company, CONAIR history, vision mission" %}
+{% set meta_robots = "index, follow" %}
+{% set og_image = base_url ~ "/assets/images/about-og.jpg" %}
+
+{% block content %}
+
+<!-- ===== SUBHEADER / HERO SECTION ===== -->
+<section id="subheader" class="jarallax text-light">
+    <img src="images/background/1.webp" class="jarallax-img" alt="">
+    <div class="container relative z-index-1000">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="subtitle s2 bg-color text-light wow fadeInUp mb-2">Our Company</div>
+                <h1>About Us</h1>
+                <ul class="crumb">
+                    <li><a href="{{ base_url }}/">Home</a></li>
+                    <li class="active">About Us</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <div class="fs-20 fw-600 no-bottom sm-hide">Dubai's Trusted AC & Maintenance Specialists Since 2014</div>
+            </div>
+        </div>
+    </div>
+    <div class="de-overlay"></div>
+</section>
+
+<!-- ===== HISTORY / COMPANY STORY SECTION ===== -->
+<section class="space">
+    <div class="container">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="subtitle wow fadeInUp mb-3">Welcome to CONAIR</div>
+                <h2 class="wow fadeInUp" data-wow-delay=".2s">Our Journey</h2>
+                <p>CONAIR was founded in 2014 by a team of HVAC engineers who saw a gap in the Dubai market - quality AC service with transparency and fair pricing. What started as a small team of 5 technicians has now grown to over 50 certified professionals serving thousands of happy customers across Dubai, Sharjah, and Abu Dhabi.</p>
+                <p>Today, we're proud to be one of the most trusted names in AC maintenance, waterproofing, painting, and general maintenance services in the UAE. Our commitment to excellence, reliability, and customer satisfaction has made us the preferred choice for both residential and commercial clients.</p>
+                
+                <div class="spacer-single"></div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex mb-3">
+                            <div class="me-3">
+                                <i class="fa-regular fa-circle-check id-color fs-30"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-0">10+ Years</h4>
+                                <p class="mb-0">Industry Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex mb-3">
+                            <div class="me-3">
+                                <i class="fa-regular fa-circle-check id-color fs-30"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-0">50+ Experts</h4>
+                                <p class="mb-0">Certified Technicians</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row g-4">
+                    <div class="col-6">
+                        <img src="images/misc/9.webp" class="img-fluid rounded-10 mb-4 wow zoomIn" alt="CONAIR Team">
+                        <div class="col-12 text-center">
+                            <div class="bg-color-2 text-light px-4 pt30 pb10 rounded-10">
+                                <div class="de_count wow fadeInUp">
+                                    <h3><span class="timer" data-to="850" data-speed="3000"></span>+</h3>
+                                    <h4>Projects Completed</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="spacer-double sm-hide"></div>
+                        <div class="col-12 text-center">
+                            <div class="bg-color text-light px-4 pt30 pb10 rounded-10">
+                                <div class="de_count wow fadeInUp">
+                                    <h3><span class="timer" data-to="99" data-speed="3000"></span>%</h3>
+                                    <h4>Customer Satisfaction</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="images/misc/8.webp" class="img-fluid rounded-10 mt-4 wow zoomIn" alt="CONAIR Service">
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</section>
+
+<!-- ===== VISION & MISSION SECTION ===== -->
+<section class="no-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="subtitle wow fadeInUp mb-3">Our Purpose</div>
+                <h2 class="wow fadeInUp" data-wow-delay=".2s">Vision & Mission</h2>
+                <p class="lead mb-5">Guided by a clear purpose and unwavering commitment to excellence</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="p-5 bg-light-2 rounded-20px h-100 wow fadeInLeft">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-color text-light d-flex align-items-center justify-content-center rounded-16px me-3" style="width: 70px; height: 70px;">
+                            <i class="fas fa-eye fs-30"></i>
+                        </div>
+                        <h2 class="mb-0 fs-40 fw-700">Our Vision</h2>
+                    </div>
+                    <p class="fs-20 fw-500 text-dark mb-0">To be the most trusted and innovative HVAC & maintenance solutions provider in the UAE, setting new standards of excellence in comfort and sustainability.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="p-5 bg-light-2 rounded-20px h-100 wow fadeInRight">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-color-2 text-light d-flex align-items-center justify-content-center rounded-16px me-3" style="width: 70px; height: 70px;">
+                            <i class="fas fa-bullseye fs-30"></i>
+                        </div>
+                        <h2 class="mb-0 fs-40 fw-700">Our Mission</h2>
+                    </div>
+                    <p class="fs-20 fw-500 text-dark mb-0">To deliver exceptional quality services with integrity, professionalism, and care. We exceed customer expectations through innovative solutions and skilled expertise.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CORE VALUES SECTION ===== -->
+<section class="space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="subtitle wow fadeInUp mb-3">What We Stand For</div>
+                <h2 class="wow fadeInUp" data-wow-delay=".2s">Our Core Values</h2>
+                <p class="lead mb-5">The principles that guide everything we do</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="p-4 bg-white rounded-20px shadow-soft h-100 text-center wow fadeInUp" data-wow-delay=".1s">
+                    <div class="bg-color-2-light d-flex align-items-center justify-content-center rounded-16px mx-auto mb-4" style="width: 80px; height: 80px;">
+                        <i class="fas fa-shield-alt fs-30 id-color-2"></i>
+                    </div>
+                    <h4 class="fw-700">Integrity</h4>
+                    <p class="mb-0">Honest, transparent service with no hidden charges. We do what we say.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="p-4 bg-white rounded-20px shadow-soft h-100 text-center wow fadeInUp" data-wow-delay=".2s">
+                    <div class="bg-color-2-light d-flex align-items-center justify-content-center rounded-16px mx-auto mb-4" style="width: 80px; height: 80px;">
+                        <i class="fas fa-medal fs-30 id-color-2"></i>
+                    </div>
+                    <h4 class="fw-700">Excellence</h4>
+                    <p class="mb-0">We never compromise on quality. Every job is done to the highest standard.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="p-4 bg-white rounded-20px shadow-soft h-100 text-center wow fadeInUp" data-wow-delay=".3s">
+                    <div class="bg-color-2-light d-flex align-items-center justify-content-center rounded-16px mx-auto mb-4" style="width: 80px; height: 80px;">
+                        <i class="fas fa-clock fs-30 id-color-2"></i>
+                    </div>
+                    <h4 class="fw-700">Reliability</h4>
+                    <p class="mb-0">On-time service, guaranteed. We respect your time and schedule.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="p-4 bg-white rounded-20px shadow-soft h-100 text-center wow fadeInUp" data-wow-delay=".4s">
+                    <div class="bg-color-2-light d-flex align-items-center justify-content-center rounded-16px mx-auto mb-4" style="width: 80px; height: 80px;">
+                        <i class="fas fa-heart fs-30 id-color-2"></i>
+                    </div>
+                    <h4 class="fw-700">Customer First</h4>
+                    <p class="mb-0">Your satisfaction is our success. We listen, understand, and deliver.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATS / ACHIEVEMENTS SECTION ===== -->
+{# <section class="no-top">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center wow fadeInUp">
+                    <div class="d-flex align-items-center justify-content-center bg-color-2-light rounded-16px mx-auto mb-3" style="width: 100px; height: 100px;">
+                        <i class="fas fa-calendar-alt fs-40 id-color-2"></i>
+                    </div>
+                    <h3 class="fs-40 fw-800 mb-0"><span class="timer" data-to="10" data-speed="3000"></span>+</h3>
+                    <p class="fs-16 fw-600 text-uppercase ls-2">Years Experience</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center wow fadeInUp" data-wow-delay=".2s">
+                    <div class="d-flex align-items-center justify-content-center bg-color-2-light rounded-16px mx-auto mb-3" style="width: 100px; height: 100px;">
+                        <i class="fas fa-users fs-40 id-color-2"></i>
+                    </div>
+                    <h3 class="fs-40 fw-800 mb-0"><span class="timer" data-to="5000" data-speed="3000"></span>+</h3>
+                    <p class="fs-16 fw-600 text-uppercase ls-2">Happy Clients</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center wow fadeInUp" data-wow-delay=".4s">
+                    <div class="d-flex align-items-center justify-content-center bg-color-2-light rounded-16px mx-auto mb-3" style="width: 100px; height: 100px;">
+                        <i class="fas fa-tools fs-40 id-color-2"></i>
+                    </div>
+                    <h3 class="fs-40 fw-800 mb-0"><span class="timer" data-to="50" data-speed="3000"></span>+</h3>
+                    <p class="fs-16 fw-600 text-uppercase ls-2">Expert Technicians</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center wow fadeInUp" data-wow-delay=".6s">
+                    <div class="d-flex align-items-center justify-content-center bg-color-2-light rounded-16px mx-auto mb-3" style="width: 100px; height: 100px;">
+                        <i class="fas fa-trophy fs-40 id-color-2"></i>
+                    </div>
+                    <h3 class="fs-40 fw-800 mb-0"><span class="timer" data-to="25" data-speed="3000"></span>+</h3>
+                    <p class="fs-16 fw-600 text-uppercase ls-2">Awards Won</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> #}
+
+<!-- ===== CERTIFICATIONS SECTION ===== -->
+<section class="space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="subtitle wow fadeInUp mb-3">Our Credentials</div>
+                <h2 class="wow fadeInUp" data-wow-delay=".2s">Certifications & Approvals</h2>
+                <p class="lead mb-5">Officially approved & certified by UAE authorities</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="p-4 bg-white rounded-16px text-center shadow-soft h-100 wow fadeInUp">
+                    <i class="fas fa-certificate fs-40 id-color mb-3"></i>
+                    <h5 class="fw-700 mb-1">DM</h5>
+                    <p class="fs-14 mb-0 text-muted">Dubai Municipality</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="p-4 bg-white rounded-16px text-center shadow-soft h-100 wow fadeInUp" data-wow-delay=".1s">
+                    <i class="fas fa-shield-alt fs-40 id-color mb-3"></i>
+                    <h5 class="fw-700 mb-1">ISO 9001</h5>
+                    <p class="fs-14 mb-0 text-muted">Quality Management</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="p-4 bg-white rounded-16px text-center shadow-soft h-100 wow fadeInUp" data-wow-delay=".2s">
+                    <i class="fas fa-bolt fs-40 id-color mb-3"></i>
+                    <h5 class="fw-700 mb-1">DEWA</h5>
+                    <p class="fs-14 mb-0 text-muted">Approved</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="p-4 bg-white rounded-16px text-center shadow-soft h-100 wow fadeInUp" data-wow-delay=".3s">
+                    <i class="fas fa-leaf fs-40 id-color mb-3"></i>
+                    <h5 class="fw-700 mb-1">Estidama</h5>
+                    <p class="fs-14 mb-0 text-muted">Green Building</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="p-4 bg-white rounded-16px text-center shadow-soft h-100 wow fadeInUp" data-wow-delay=".4s">
+                    <i class="fas fa-hard-hat fs-40 id-color mb-3"></i>
+                    <h5 class="fw-700 mb-1">OHSAS</h5>
+                    <p class="fs-14 mb-0 text-muted">Health & Safety</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="p-4 bg-white rounded-16px text-center shadow-soft h-100 wow fadeInUp" data-wow-delay=".5s">
+                    <i class="fas fa-building fs-40 id-color mb-3"></i>
+                    <h5 class="fw-700 mb-1">Trakhees</h5>
+                    <p class="fs-14 mb-0 text-muted">Approved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TEAM SECTION ===== -->
+<section class="no-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5 bg-color text-white rounded-20px">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-3 text-center">
+                            <div class="bg-color-2 text-light subtitle wow fadeInUp mb-3">Behind the Scene</div>
+                            <h2 class="wow fadeInUp text-white" data-wow-delay=".2s">Our Leadership Team</h2>
+                            <p class="lead text-white opacity-8">Meet the experts behind CONAIR's success</p>
+                            <div class="spacer-single"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="bg-white rounded-16px p-3 h-100 text-center wow fadeInUp">
+                                <img src="images/team/1.webp" class="img-fluid rounded-10px mb-3" alt="">
+                                <h4 class="mb-0 text-dark">Rahul Sharma</h4>
+                                <p class="mb-2 id-color-2 fw-600">Founder & CEO</p>
+                                <p class="fs-14 text-muted px-2">15+ years in HVAC industry. IIT Delhi alumnus.</p>
+                                <div class="social-icons">
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-facebook-f"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-x-twitter"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="bg-white rounded-16px p-3 h-100 text-center wow fadeInUp" data-wow-delay=".1s">
+                                <img src="images/team/2.webp" class="img-fluid rounded-10px mb-3" alt="">
+                                <h4 class="mb-0 text-dark">Ahmed Al Mansoori</h4>
+                                <p class="mb-2 id-color-2 fw-600">Operations Director</p>
+                                <p class="fs-14 text-muted px-2">12+ years managing large-scale UAE operations.</p>
+                                <div class="social-icons">
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-facebook-f"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-x-twitter"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="bg-white rounded-16px p-3 h-100 text-center wow fadeInUp" data-wow-delay=".2s">
+                                <img src="images/team/3.webp" class="img-fluid rounded-10px mb-3" alt="">
+                                <h4 class="mb-0 text-dark">Priya Patel</h4>
+                                <p class="mb-2 id-color-2 fw-600">Technical Director</p>
+                                <p class="fs-14 text-muted px-2">HVAC specialist in energy-efficient solutions.</p>
+                                <div class="social-icons">
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-facebook-f"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-x-twitter"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="bg-white rounded-16px p-3 h-100 text-center wow fadeInUp" data-wow-delay=".3s">
+                                <img src="images/team/4.webp" class="img-fluid rounded-10px mb-3" alt="">
+                                <h4 class="mb-0 text-dark">Faisal Khan</h4>
+                                <p class="mb-2 id-color-2 fw-600">Customer Relations</p>
+                                <p class="fs-14 text-muted px-2">Ensuring 99% customer satisfaction rate.</p>
+                                <div class="social-icons">
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-facebook-f"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-x-twitter"></i></a>
+                                    <a href="#"><i class="bg-color-2-light id-color-2 bg-hover-2 text-hover-white fa-brands fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="p-5 bg-color-2 text-white rounded-20px text-center wow fadeInUp">
+                    <h2 class="text-white mb-3">Ready to experience the CONAIR difference?</h2>
+                    <p class="lead text-white opacity-9 mb-4">Join 5000+ happy customers who trust us for their AC & maintenance needs</p>
+                    <a href="{{ base_url }}/contact" class="btn-main bg-white text-dark fw-700">
+                        <i class="fas fa-calendar-check me-2"></i>Schedule a Service
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,28 +1,140 @@
 {% extends "admin/layout.twig" %}
 
 {% block content %}
-
-<h2>Admin Dashboard</h2>
-
-<div style="display:flex; gap:20px; margin-top:20px;">
-
-    <div style="background:#28a745; color:white; padding:20px; width:200px;">
-        <h3>Published</h3>
-        <h2>{{ published_count }}</h2>
+<!-- Stats Cards -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-info">
+            <h3>Published</h3>
+            <h2>{{ published_count|default('0') }}</h2>
+        </div>
+        <div class="stat-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
     </div>
-
-    <div style="background:#ffc107; color:black; padding:20px; width:200px;">
-        <h3>Draft</h3>
-        <h2>{{ draft_count }}</h2>
+    
+    <div class="stat-card">
+        <div class="stat-info">
+            <h3>Drafts</h3>
+            <h2>{{ draft_count|default('0') }}</h2>
+        </div>
+        <div class="stat-icon">
+            <i class="fas fa-pen"></i>
+        </div>
     </div>
-
+    
+    <div class="stat-card">
+        <div class="stat-info">
+            <h3>Total Blogs</h3>
+            <h2>{{ total_count|default('0') }}</h2>
+        </div>
+        <div class="stat-icon">
+            <i class="fas fa-newspaper"></i>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-info">
+            <h3>This Month</h3>
+            <h2>{{ monthly_count|default('0') }}</h2>
+        </div>
+        <div class="stat-icon">
+            <i class="fas fa-calendar"></i>
+        </div>
+    </div>
 </div>
 
-<br><br>
+<!-- Recent Blogs Section -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2 style="color: #0f172a; font-size: 1.3rem; font-weight: 600;">Recent Blogs</h2>
+    <a href="{{ base_url }}/admin/blog/create" class="btn btn-primary">
+        <i class="fas fa-plus"></i>
+        New Blog
+    </a>
+</div>
 
-<a href="{{ base_url }}/admin/blog" 
-   style="padding:10px 15px; background:#007bff; color:white; text-decoration:none;">
-   Manage Blogs
-</a>
+<!-- Recent Blogs Table -->
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in recent_blogs|default([]) %}
+            <tr>
+                <td>
+                    {% if blog.featured_image %}
+                        <img src="{{ base_url }}/uploads/{{ blog.featured_image }}" class="blog-image">
+                    {% else %}
+                        <div style="width:48px; height:48px; background:#f0eff7; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-image" style="color:#393186; opacity:0.5;"></i>
+                        </div>
+                    {% endif %}
+                </td>
+                <td style="font-weight: 600; color: #0f172a;">{{ blog.title }}</td>
+                <td>
+                    {% if blog.status == 'published' %}
+                        <span class="status-badge status-published">
+                            <i class="fas fa-circle" style="font-size: 6px;"></i>
+                            Published
+                        </span>
+                    {% else %}
+                        <span class="status-badge status-draft">
+                            <i class="fas fa-circle" style="font-size: 6px;"></i>
+                            Draft
+                        </span>
+                    {% endif %}
+                </td>
+                <td>{{ blog.created_at|date("d M, Y") }}</td>
+                <td>
+                    <div class="actions">
+                        <a href="{{ base_url }}/blog/{{ blog.slug }}" target="_blank" class="action-btn">
+                            <i class="fas fa-eye"></i>
+                            View
+                        </a>
+                        <a href="{{ base_url }}/admin/blog/edit/{{ blog.id }}" class="action-btn">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </a>
+                        <a href="{{ base_url }}/admin/blog/delete/{{ blog.id }}" 
+                           class="action-btn action-delete"
+                           onclick="return confirm('Delete this blog?')">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">
+                    <div class="empty-state">
+                        <i class="fas fa-newspaper"></i>
+                        <h3>No blogs yet</h3>
+                        <p>Create your first blog post</p>
+                        <a href="{{ base_url }}/admin/blog/create" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Create Blog
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
+<!-- View All Link -->
+<div style="margin-top: 24px; text-align: right;">
+    <a href="{{ base_url }}/admin/blog" style="color: #393186; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+        View all blogs
+        <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
 {% endblock %}

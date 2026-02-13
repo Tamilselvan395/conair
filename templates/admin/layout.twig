@@ -2,57 +2,482 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title|default('Admin Panel') }}</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ base_url }}/assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ base_url }}/assets/images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ base_url }}/assets/images/apple-touch-icon.png">
-
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
-        body { margin:0; font-family:Arial; background:#f4f6f9; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fb;
+            display: flex;
+            color: #1e293b;
+        }
+        
+        /* Sidebar - #393186 */
         .sidebar {
-            width:220px;
-            height:100vh;
-            background:#343a40;
-            position:fixed;
-            padding-top:20px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            border-right: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
         }
-        .sidebar a {
-            display:block;
-            color:white;
-            padding:12px 20px;
-            text-decoration:none;
+        
+        .sidebar-header {
+            padding: 30px 24px;
+            border-bottom: 1px solid #edf2f7;
         }
-        .sidebar a:hover {
-            background:#495057;
+        
+        .sidebar-header h3 {
+            color: #393186;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
         }
+        
+        .sidebar-header h3 i {
+            color: #393186;
+            background: #f0eff7;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .sidebar-menu {
+            flex: 1;
+            padding: 24px 16px;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #64748b;
+            padding: 12px 16px;
+            text-decoration: none;
+            border-radius: 12px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        
+        .sidebar-menu a i {
+            width: 20px;
+            color: #94a3b8;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-menu a:hover {
+            background: #f0eff7;
+            color: #393186;
+        }
+        
+        .sidebar-menu a:hover i {
+            color: #393186;
+        }
+        
+        .sidebar-menu a.active {
+            background: #393186;
+            color: white;
+        }
+        
+        .sidebar-menu a.active i {
+            color: white;
+        }
+        
+        .sidebar-footer {
+            padding: 24px 16px;
+            border-top: 1px solid #edf2f7;
+        }
+        
+        .sidebar-footer a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ef4444;
+            padding: 12px 16px;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        
+        .sidebar-footer a:hover {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .sidebar-footer a i {
+            width: 20px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .top-bar {
+            background: white;
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .user-name {
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            background: #f0eff7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #393186;
+            font-weight: 600;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(57,49,134,0.08);
+        }
+        
         .content {
-            margin-left:220px;
-            padding:30px;
+            padding: 32px;
         }
-        table img {
-            width:60px;
-            height:60px;
-            object-fit:cover;
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #edf2f7;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+        
+        .stat-card:hover {
+            border-color: #393186;
+            box-shadow: 0 8px 20px rgba(57,49,134,0.06);
+        }
+        
+        .stat-info h3 {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -1px;
+        }
+        
+        .stat-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: #f0eff7;
+            color: #393186;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: -0.2px;
+        }
+        
+        .btn-primary {
+            background: #393186;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2e2770;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(57,49,134,0.2);
+        }
+        
+        .btn-outline {
+            background: white;
+            color: #393186;
+            border: 1.5px solid #393186;
+        }
+        
+        .btn-outline:hover {
+            background: #f0eff7;
+        }
+        
+        /* Table */
+        .table-container {
+            background: white;
+            border-radius: 20px;
+            padding: 4px;
+            border: 1px solid #edf2f7;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            text-align: left;
+            padding: 18px 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #393186;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #edf2f7;
+            background: #fafafc;
+        }
+        
+        td {
+            padding: 18px 24px;
+            border-bottom: 1px solid #edf2f7;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: #fafafc;
+        }
+        
+        .blog-image {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid #edf2f7;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        
+        .status-published {
+            background: #e6f7e6;
+            color: #0b6e0b;
+        }
+        
+        .status-draft {
+            background: #fff3e0;
+            color: #b45b0b;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .action-btn {
+            padding: 8px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            background: white;
+            border: 1px solid #edf2f7;
+            color: #475569;
+        }
+        
+        .action-btn:hover {
+            background: #f0eff7;
+            border-color: #393186;
+            color: #393186;
+        }
+        
+        .action-delete:hover {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #dc2626;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-state i {
+            font-size: 3.5rem;
+            color: #393186;
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+        
+        .empty-state h3 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .empty-state p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                overflow: hidden;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-
 <body>
-
-<div class="sidebar">
-    <h3 style="color:white; padding-left:20px;">Admin</h3>
-
-    <a href="{{ base_url }}/admin">Dashboard</a>
-    <a href="{{ base_url }}/admin/blog">Blogs</a>
-    <a href="{{ base_url }}/">Visit Website</a>
-        <a href="{{ base_url }}/admin/logout" style="color:#dc3545;">
-            Logout
-        </a>
-</div>
-
-<div class="content">
-    {% block content %}{% endblock %}
-</div>
-
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>
+                <i class="fas fa-crown"></i>
+                Admin
+            </h3>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="{{ base_url }}/admin" class="{{ active == 'dashboard' ? 'active' : '' }}">
+                <i class="fas fa-chart-pie"></i>
+                Dashboard
+            </a>
+            <a href="{{ base_url }}/admin/blog" class="{{ active == 'blog' ? 'active' : '' }}">
+                <i class="fas fa-newspaper"></i>
+                Blogs
+            </a>
+            <a href="{{ base_url }}/admin/contacts" class="{{ active == 'contacts' ? 'active' : '' }}">
+                <i class="fas fa-envelope"></i>
+                Contacts
+            </a>
+            <a target="_blank" href="{{ base_url }}/">
+                <i class="fas fa-globe"></i>
+                Website
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">
+            <a href="{{ base_url }}/admin/logout" onclick="return confirm('Logout?')">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <h1 class="page-title">{{ title|default('Dashboard') }}</h1>
+            <div class="user-info">
+                <span class="user-name">Admin</span>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            {% if flash_success %}
+            <div style="background: #e6f7e6; color: #0b6e0b; padding: 16px 20px; border-radius: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; border: 1px solid #b3e6b3;">
+                <i class="fas fa-check-circle"></i>
+                {{ flash_success }}
+            </div>
+            {% endif %}
+            
+            {% if flash_error %}
+            <div style="background: #fee2e2; color: #991b1b; padding: 16px 20px; border-radius: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; border: 1px solid #fecaca;">
+                <i class="fas fa-exclamation-circle"></i>
+                {{ flash_error }}
+            </div>
+            {% endif %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </div>
 </body>
 </html>

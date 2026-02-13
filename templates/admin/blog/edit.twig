@@ -1,67 +1,255 @@
 {% extends "admin/layout.twig" %}
 
 {% block content %}
-
-<h2>Edit Blog</h2>
-
-<form method="POST" enctype="multipart/form-data">
-
-<input type="hidden" name="{{ csrf.keys.name }}" value="{{ csrf.name }}">
-<input type="hidden" name="{{ csrf.keys.value }}" value="{{ csrf.value }}">
-
-    <div style="margin-bottom:15px;">
-        <label>Title</label><br>
-        <input type="text" name="title" value="{{ blog.title }}" required style="width:100%; padding:8px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px;">
+    <div>
+        <h2 style="font-size: 1.5rem; color: #0f172a; margin-bottom: 8px;">Edit Blog</h2>
+        <p style="color: #64748b;">Update your blog post details</p>
     </div>
+    <a href="{{ base_url }}/admin/blog" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: white; color: #475569; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; border: 1.5px solid #edf2f7; transition: all 0.2s;"
+       onmouseover="this.style.borderColor='#393186'; this.style.color='#393186';"
+       onmouseout="this.style.borderColor='#edf2f7'; this.style.color='#475569';">
+        <i class="fas fa-arrow-left"></i>
+        Back to Blogs
+    </a>
+</div>
 
-    <div style="margin-bottom:15px;">
-        <label>Meta Title</label><br>
-        <input type="text" name="meta_title" value="{{ blog.meta_title }}" style="width:100%; padding:8px;">
-    </div>
+<div style="background: white; border-radius: 24px; padding: 32px; border: 1px solid #edf2f7; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Title -->
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #393186; margin-bottom: 8px;">
+                <i class="fas fa-heading" style="margin-right: 6px;"></i>
+                Blog Title
+            </label>
+            <input type="text" name="title" value="{{ blog.title }}" required 
+                   style="width: 100%; padding: 14px 16px; border: 1.5px solid #edf2f7; border-radius: 14px; font-size: 0.95rem; background: #fafbfc; transition: all 0.2s; color: #0f172a;"
+                   onfocus="this.style.borderColor='#393186'; this.style.background='white'; this.style.boxShadow='0 0 0 4px rgba(57,49,134,0.05)';"
+                   onblur="this.style.borderColor='#edf2f7'; this.style.background='#fafbfc'; this.style.boxShadow='none';">
+            <div style="font-size: 0.75rem; color: #64748b; margin-top: 6px;">
+                <i class="fas fa-info-circle" style="color: #393186; opacity: 0.7;"></i>
+                Use a clear, SEO-friendly title
+            </div>
+        </div>
 
-    <div style="margin-bottom:15px;">
-        <label>Meta Description</label><br>
-        <textarea name="meta_description" rows="3" style="width:100%; padding:8px;">{{ blog.meta_description }}</textarea>
-    </div>
+        <!-- Meta Title -->
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #393186; margin-bottom: 8px;">
+                <i class="fas fa-tag" style="margin-right: 6px;"></i>
+                Meta Title
+            </label>
+            <input type="text" name="meta_title" value="{{ blog.meta_title }}" 
+                   style="width: 100%; padding: 14px 16px; border: 1.5px solid #edf2f7; border-radius: 14px; font-size: 0.95rem; background: #fafbfc; transition: all 0.2s; color: #0f172a;"
+                   onfocus="this.style.borderColor='#393186'; this.style.background='white'; this.style.boxShadow='0 0 0 4px rgba(57,49,134,0.05)';"
+                   onblur="this.style.borderColor='#edf2f7'; this.style.background='#fafbfc'; this.style.boxShadow='none';"
+                   placeholder="SEO title (optional)">
+        </div>
 
-    <div style="margin-bottom:15px;">
-        <label>Content</label><br>
-        <textarea name="content" id="editor" rows="8" style="width:100%; padding:8px;">{{ blog.content }}</textarea>
-    </div>
+        <!-- Meta Description -->
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #393186; margin-bottom: 8px;">
+                <i class="fas fa-align-left" style="margin-right: 6px;"></i>
+                Meta Description
+            </label>
+            <textarea name="meta_description" rows="3" 
+                      style="width: 100%; padding: 14px 16px; border: 1.5px solid #edf2f7; border-radius: 14px; font-size: 0.95rem; background: #fafbfc; transition: all 0.2s; color: #0f172a; resize: vertical; font-family: inherit;"
+                      onfocus="this.style.borderColor='#393186'; this.style.background='white'; this.style.boxShadow='0 0 0 4px rgba(57,49,134,0.05)';"
+                      onblur="this.style.borderColor='#edf2f7'; this.style.background='#fafbfc'; this.style.boxShadow='none';"
+                      placeholder="Brief description for search engines (optional)">{{ blog.meta_description }}</textarea>
+        </div>
 
-    <div style="margin-bottom:15px;">
-        <label>Featured Image</label><br>
+        <!-- Content -->
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #393186; margin-bottom: 8px;">
+                <i class="fas fa-file-alt" style="margin-right: 6px;"></i>
+                Content
+            </label>
+            <textarea name="content" id="editor" rows="8" 
+                      style="width: 100%; padding: 14px 16px; border: 1.5px solid #edf2f7; border-radius: 14px; font-size: 0.95rem; background: #fafbfc; color: #0f172a;">{{ blog.content }}</textarea>
+            <div style="font-size: 0.75rem; color: #64748b; margin-top: 6px;">
+                <i class="fas fa-edit" style="color: #393186; opacity: 0.7;"></i>
+                Write your blog content using the rich editor
+            </div>
+        </div>
 
-        {% if blog.featured_image %}
-            <img src="{{ base_url }}/uploads/{{ blog.featured_image }}" width="120"><br><br>
-        {% endif %}
+        <!-- Featured Image -->
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #393186; margin-bottom: 8px;">
+                <i class="fas fa-image" style="margin-right: 6px;"></i>
+                Featured Image
+            </label>
+            
+            {% if blog.featured_image %}
+            <div style="background: #f8fafc; border-radius: 16px; padding: 20px; border: 1px solid #edf2f7; margin-bottom: 16px; display: flex; align-items: center; gap: 20px;">
+                <img src="{{ base_url }}/uploads/{{ blog.featured_image }}" 
+                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 14px; border: 3px solid white; box-shadow: 0 4px 12px rgba(57,49,134,0.1);">
+                <div>
+                    <p style="font-weight: 600; color: #0f172a; margin-bottom: 4px;">Current Image</p>
+                    <p style="font-size: 0.8rem; color: #64748b;">{{ blog.featured_image }}</p>
+                    <label style="display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 0.8rem; color: #ef4444; cursor: pointer;">
+                        <input type="checkbox" name="remove_image" value="1" style="accent-color: #393186; width: 16px; height: 16px;">
+                        Remove current image
+                    </label>
+                </div>
+            </div>
+            {% endif %}
+            
+            <div style="position: relative;">
+                <input type="file" name="featured_image" id="featuredImage" accept="image/*" style="display: none;">
+                <button type="button" onclick="document.getElementById('featuredImage').click();"
+                        style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #f0eff7; color: #393186; border: 1.5px dashed #393186; border-radius: 14px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;"
+                        onmouseover="this.style.background='#e6e3f5';"
+                        onmouseout="this.style.background='#f0eff7';">
+                    <i class="fas fa-upload"></i>
+                    {{ blog.featured_image ? 'Change Image' : 'Upload Image' }}
+                </button>
+                <span id="fileName" style="margin-left: 12px; font-size: 0.85rem; color: #64748b;"></span>
+            </div>
+            <div style="font-size: 0.75rem; color: #64748b; margin-top: 8px;">
+                <i class="fas fa-info-circle" style="color: #393186; opacity: 0.7;"></i>
+                Recommended: 1200x800px, JPG or PNG, max 2MB
+            </div>
+        </div>
 
-        <input type="file" name="featured_image">
-    </div>
+        <!-- Status -->
+        <div style="margin-bottom: 32px;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #393186; margin-bottom: 8px;">
+                <i class="fas fa-globe" style="margin-right: 6px;"></i>
+                Status
+            </label>
+            <div style="display: flex; gap: 20px; background: #f8fafc; padding: 16px; border-radius: 16px; border: 1px solid #edf2f7;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: white; border-radius: 12px; border: 1.5px solid {{ blog.status == 'draft' ? '#393186' : '#edf2f7' }}; transition: all 0.2s;">
+                    <input type="radio" name="status" value="draft" {% if blog.status == 'draft' %}checked{% endif %} style="accent-color: #393186; width: 16px; height: 16px; margin: 0;">
+                    <span style="font-weight: 600; color: {{ blog.status == 'draft' ? '#393186' : '#475569' }};">
+                        <i class="fas fa-pen" style="margin-right: 4px;"></i>
+                        Draft
+                    </span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: white; border-radius: 12px; border: 1.5px solid {{ blog.status == 'published' ? '#393186' : '#edf2f7' }}; transition: all 0.2s;">
+                    <input type="radio" name="status" value="published" {% if blog.status == 'published' %}checked{% endif %} style="accent-color: #393186; width: 16px; height: 16px; margin: 0;">
+                    <span style="font-weight: 600; color: {{ blog.status == 'published' ? '#393186' : '#475569' }};">
+                        <i class="fas fa-check-circle" style="margin-right: 4px;"></i>
+                        Published
+                    </span>
+                </label>
+            </div>
+        </div>
 
-    <div style="margin-bottom:15px;">
-        <label>Status</label><br>
-        <select name="status" style="padding:8px;">
-            <option value="draft" {% if blog.status == 'draft' %}selected{% endif %}>Draft</option>
-            <option value="published" {% if blog.status == 'published' %}selected{% endif %}>Publish</option>
-        </select>
-    </div>
+        <!-- Actions -->
+        <div style="display: flex; gap: 16px; align-items: center; padding-top: 16px; border-top: 1px solid #edf2f7;">
+            <button type="submit" class="btn btn-primary" 
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: #393186; color: white; border: none; border-radius: 14px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(57,49,134,0.2);"
+                    onmouseover="this.style.background='#2e2770'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 16px rgba(57,49,134,0.3)';"
+                    onmouseout="this.style.background='#393186'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(57,49,134,0.2)';">
+                <i class="fas fa-save"></i>
+                Update Blog
+            </button>
+            
+            <a href="{{ base_url }}/admin/blog" 
+               style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: white; color: #64748b; text-decoration: none; border-radius: 14px; font-weight: 600; font-size: 0.95rem; border: 1.5px solid #edf2f7; transition: all 0.2s;"
+               onmouseover="this.style.borderColor='#393186'; this.style.color='#393186'; this.style.background='#f0eff7';"
+               onmouseout="this.style.borderColor='#edf2f7'; this.style.color='#64748b'; this.style.background='white';">
+                <i class="fas fa-times"></i>
+                Cancel
+            </a>
+            
+            {% if blog.status == 'published' %}
+            <a href="{{ base_url }}/blog/{{ blog.slug }}" target="_blank"
+               style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: white; color: #393186; text-decoration: none; border-radius: 14px; font-weight: 600; font-size: 0.95rem; border: 1.5px solid #393186; transition: all 0.2s; margin-left: auto;"
+               onmouseover="this.style.background='#393186'; this.style.color='white';"
+               onmouseout="this.style.background='white'; this.style.color='#393186';">
+                <i class="fas fa-external-link-alt"></i>
+                Preview
+            </a>
+            {% endif %}
+        </div>
+    </form>
+</div>
 
-    <button type="submit" style="padding:10px 20px; background:#28a745; color:white; border:none;">
-        Update Blog
-    </button>
-
-</form>
-
+<!-- TinyMCE Configuration -->
 <script src="{{ base_url }}/assets/editor/tinymce/tinymce.min.js"></script>
 <script>
 tinymce.init({
     selector: '#editor',
-    height: 450,
+    height: 500,
     menubar: false,
-    plugins: 'lists link image table code',
-    toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code'
+    branding: false,
+    elementpath: false,
+    statusbar: true,
+    resize: true,
+    plugins: 'lists link image table code preview searchreplace wordcount',
+    toolbar: 'undo redo | styleselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | code preview',
+    style_formats: [
+        {title: 'Heading 2', block: 'h2'},
+        {title: 'Heading 3', block: 'h3'},
+        {title: 'Paragraph', block: 'p'},
+        {title: 'Code', inline: 'code'}
+    ],
+    content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.6; color: #0f172a; }',
+    skin: 'oxide',
+    content_css: 'default',
+    images_upload_url: '{{ base_url }}/admin/upload-image',
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    image_dimensions: true,
+    image_class_list: [
+        {title: 'Responsive', value: 'img-fluid'},
+    ]
+});
+
+// Display selected filename
+document.getElementById('featuredImage')?.addEventListener('change', function(e) {
+    const fileName = e.target.files[0]?.name;
+    document.getElementById('fileName').textContent = fileName || '';
 });
 </script>
 
+<style>
+/* Additional styles for TinyMCE and form elements */
+.tox .tox-toolbar__primary {
+    background: #f8fafc !important;
+}
+
+.tox .tox-edit-area__iframe {
+    background: white !important;
+}
+
+.tox .tox-statusbar {
+    border-top: 1px solid #edf2f7 !important;
+}
+
+/* Custom radio button styles */
+input[type="radio"] {
+    cursor: pointer;
+}
+
+input[type="radio"]:checked {
+    background-color: #393186;
+    border-color: #393186;
+}
+
+/* Focus states */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+/* Placeholder color */
+::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    div[style*="display: flex; gap: 16px;"] {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+    
+    .btn-primary, a[style*="padding: 14px 32px"] {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
 {% endblock %}
