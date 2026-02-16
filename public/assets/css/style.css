@@ -1882,7 +1882,7 @@ header.s2 #mainmenu>li>a {
 }
 
 header.header-mobile {
-  position: fixed !important;
+  /* position: fixed !important; */
   background: var(--title-font-color);
   top: 0;
   padding-bottom: 10px;
